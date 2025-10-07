@@ -1,0 +1,32 @@
+{
+  "name": "Refarral-System-Vortex",
+  "version": "1.0.0",
+  "description": "Sistema de indicação para candidatura no Vortex Unifor",
+  "main": "index.js",
+  "scripts": {
+    "prisma:generate": "prisma generate --schema=./app/api",
+    "prisma:migrate:dev": "prisma migrate dev --schema=./app/api",
+    "prisma:studio": "prisma studio --schema=./app/api",
+    "setup": "npm run prisma:generate && npm run prisma:migrate:dev",
+    "dev:api": "tsx watch --env-file=.env ./app/api/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "João Victor Barreto",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4",
+  "dependencies": {
+    "@prisma/client": "6.16.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.7.0",
+    "prisma": "^6.16.3",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

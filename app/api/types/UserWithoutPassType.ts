@@ -1,8 +1,7 @@
-export type UserType = {
+export type UserWithoutPassType = {
     id: string
     name: string
     email: string
     score: number
-    password: string
     codeReferral: string
 }

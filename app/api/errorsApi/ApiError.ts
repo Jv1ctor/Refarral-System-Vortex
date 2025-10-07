@@ -1,6 +1,6 @@
 export type ParamErrorType = {
   message: string,
-  codeError?: string
+  // codeError?: string
 }
 
 export class ApiError extends Error {

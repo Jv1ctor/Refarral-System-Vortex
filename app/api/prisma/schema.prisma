@@ -17,7 +17,7 @@ model Users {
   id String @id @default(uuid())
   name String @db.VarChar(255)
   email String @unique @db.VarChar(255)
-  password String @db.VarChar(255)
+  password String @db.VarChar
   score Int @db.Integer @default(0)
-  codeReferral String @unique @db.VarChar(10)
+  codeReferral String @unique @db.VarChar(12)
 }

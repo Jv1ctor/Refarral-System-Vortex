@@ -1,4 +1,4 @@
-import { ApiError, ParamErrorType } from "./Api.errors"
+import { ApiError, ParamErrorType } from "./ApiError"
 
 export class UnauthorizedError extends ApiError {
   constructor({ message }: ParamErrorType) {

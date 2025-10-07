@@ -12,6 +12,7 @@ import {
   UserLoginSchemaType,
 } from "../../../lib/schemas/UserLoginSchema"
 import JWT from "jsonwebtoken"
+import { success } from "zod"
 
 export class UserService {
   private saltsRound = process.env.SALTS_ROUNDS || 10
@@ -53,6 +54,32 @@ export class UserService {
     })
 
     return { success: true, data: result, error: null }
+  }
+
+  public async validCode(code: string): ReturnServiceType<{
+    codeReferral: string
+    score: number
+  }> {
+    const user = await this.userRep.findByCode(code)
+
+    if (!user) return { success: false, data: null, error: "codigo invalido" }
+
+    return { success: true, data: user, error: null }
+  }
+
+  public async assignScore(
+    code: string,
+    currentScore: number
+  ): ReturnServiceType<{
+    score: number
+  }> {
+
+    const newScore = currentScore + 1
+    const user = await this.userRep.earnScore(code, newScore)
+
+    if (!user) return { success: false, data: null, error: "codigo invalido" }
+
+    return { success: true, data: user, error: null }
   }
 
   public async login(data: UserLoginSchemaType): ReturnServiceType<string> {

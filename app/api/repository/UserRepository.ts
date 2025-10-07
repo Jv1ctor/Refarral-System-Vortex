@@ -7,6 +7,8 @@ export interface IUserRepository {
   create(user: UserCreateDataType): Promise<UserWithoutPassType>
   findByEmail(email: string): Promise<UserType | null>
   findById(id: string): Promise<UserWithoutPassType | null>
+  findByCode(code: string): Promise<{ codeReferral: string, score: number} | null>
+  earnScore(code: string, currentScore: number): Promise<{ score: number }>
 }
 
 class UserRepository implements IUserRepository {
@@ -36,6 +38,21 @@ class UserRepository implements IUserRepository {
     return await prisma.users.findUnique({
       where: { id },
       omit: { password: true },
+    })
+  }
+
+  public async findByCode(code: string ){
+    return await prisma.users.findUnique({
+      where: { codeReferral: code },
+      select: { codeReferral: true, score: true },
+    }) 
+  }
+
+  public async earnScore(code: string, currentScore: number) {
+    return await prisma.users.update({
+      where: { codeReferral: code },
+      data: { score: currentScore },
+      select: { score: true }
     })
   }
 }

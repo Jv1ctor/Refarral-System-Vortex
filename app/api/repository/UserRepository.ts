@@ -6,6 +6,7 @@ import { UserType } from "../types/UserType"
 export interface IUserRepository {
   create(user: UserCreateDataType): Promise<UserWithoutPassType>
   findByEmail(email: string): Promise<UserType | null>
+  findById(id: string): Promise<UserWithoutPassType | null>
 }
 
 class UserRepository implements IUserRepository {
@@ -29,6 +30,13 @@ class UserRepository implements IUserRepository {
     })
 
     return result
+  }
+
+  public async findById(id: string) {
+    return await prisma.users.findUnique({
+      where: { id },
+      omit: { password: true },
+    })
   }
 }
 

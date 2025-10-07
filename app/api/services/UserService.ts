@@ -27,7 +27,15 @@ export class UserService {
       error,
     } = await UserRegisterSchema.safeParseAsync(data)
 
-    if (!success) return { success: false, data: null, error: error.issues.reduce((acc, item) => acc += item.message + " e ", "")}
+    if (!success)
+      return {
+        success: false,
+        data: null,
+        error: error.issues.reduce(
+          (acc, item) => (acc += item.message + " e "),
+          ""
+        ),
+      }
 
     const isExistEmail = await this.userRep.findByEmail(data.email)
 
@@ -54,7 +62,15 @@ export class UserService {
       error,
     } = await UserLoginSchema.safeParseAsync(data)
 
-    if (!success) return { success: false, data: null, error: error.issues.reduce((acc, item) => acc += item.message + " e ", "")}
+    if (!success)
+      return {
+        success: false,
+        data: null,
+        error: error.issues.reduce(
+          (acc, item) => (acc += item.message + " e "),
+          ""
+        ),
+      }
 
     const existUser = await this.userRep.findByEmail(data.email)
 
@@ -73,5 +89,27 @@ export class UserService {
     )
 
     return { success: true, data: token, error: null }
+  }
+
+  public async info(id: string): ReturnServiceType<UserWithoutPassType> {
+    const user = await this.userRep.findById(id)
+
+    if (!user)
+      return {
+        success: false,
+        data: null,
+        error: "falha ao recuperar os dados",
+      }
+
+    return {
+      success: true,
+      data: {
+        codeReferral: user.codeReferral,
+        email: user.email,
+        name: user.name,
+        score: user.score,
+      },
+      error: null,
+    }
   }
 }

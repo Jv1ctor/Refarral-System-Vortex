@@ -10,7 +10,7 @@ export class UserController {
     this.userService = new UserService(UserRepository)
   }
 
-  public async register(req: Request, res: Response, next: NextFunction) {
+  public register = async (req: Request, res: Response, next: NextFunction) => {
     try {
     const { success, data, error } = await this.userService.register(req.body)
 
@@ -23,11 +23,24 @@ export class UserController {
     }
   }
 
-  public async login(req: Request, res: Response, next: NextFunction){
+  public login = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { success, data, error } = await this.userService.login(req.body)
 
       if(!success) return next(new UnauthorizedError({ message: error }))
+
+      return res.status(200).json({ success, data })
+    } catch (error) {
+      console.log(error)
+      next(error)
+    }
+  }
+
+  public info = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { success, data, error } = await this.userService.info(res.locals.user.id)
+
+      if(!success) return next(new BadRequestError({ message: error }))
 
       return res.status(200).json({ success, data })
     } catch (error) {

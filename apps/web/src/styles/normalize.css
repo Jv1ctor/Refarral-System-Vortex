@@ -1,0 +1,161 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Corrige a altura da linha em todos os navegadores.
+ * 2. Previne ajustes de tamanho de fonte após mudança de orientação em iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove margem padrão do body.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Renderiza elementos <main> de forma consistente no IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Corrige o tamanho da fonte e a margem nos elementos <h1> dentro de <section> e <article>.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Adiciona o box-sizing correto no Firefox.
+ * 2. Mostra overflow em dispositivos Edge e IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * Corrige tamanho de fonte de elementos preformatados.
+ */
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove o background cinza de links ativos no IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Remove bordas de imagens dentro de links no IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Muda fontes para evitar inconsistências no iOS e Safari.
+ * 2. Remove margens no Firefox e Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Corrige o overflow no IE.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove o estilo de botão nos navegadores WebKit.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Corrige problemas com estilos de botões no Firefox.
+ */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove o padding interno e a borda de botões no Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restaura o foco de botões no Firefox.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* Interactive
+   ========================================================================== */
+
+/**
+ * Remove a barra de rolagem vertical extra no IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Corrige a exibição de elementos escondidos no IE 10.
+ */
+[hidden] {
+  display: none;
+}

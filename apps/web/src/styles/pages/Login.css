@@ -1,0 +1,90 @@
+
+/* Block: login-page */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  background-color: var(--bg-page);
+}
+
+/* Block: login-card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2xl);
+}
+
+.login-card__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.login-card__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.login-card__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+.login-card__footer {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.login-card__footer-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.login-card__footer-link {
+  color: var(--link-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.login-card__footer-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Block: login-form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-page {
+    padding: var(--spacing-md);
+  }
+
+  .login-card {
+    padding: var(--spacing-lg);
+  }
+
+  .login-card__title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+/* Utility Classes (Optional) */
+.login-card--shadow-sm {
+  box-shadow: var(--shadow-xs);
+}
+
+.login-card--shadow-md {
+  box-shadow: var(--shadow-md);
+}

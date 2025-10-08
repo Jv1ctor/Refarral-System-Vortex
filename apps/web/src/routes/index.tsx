@@ -1,7 +1,8 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, redirect, useParams } from "react-router";
 import { Home } from "../pages/Home";
 import type { InfoResponse } from "../types/api/InfoResponse";
 import { Login } from "../pages/Login";
+import { Register } from "../pages/Register";
 
 
 
@@ -34,7 +35,17 @@ export const router = createBrowserRouter([
     },
   },
   {
+    path: "/register/:code?",
+    element: <Register/>
+  },
+  {
     path: "/login",
     element: <Login/>,
   },
+  {
+    path: "/:code",
+    loader: ({ params }) => {
+      return redirect(`/register/${params.code}`)
+    }
+  }
 ])

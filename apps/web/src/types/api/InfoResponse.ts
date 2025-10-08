@@ -1,12 +1,9 @@
+import type { UserData } from "../userData"
+
 export type InfoResponse =
   | {
       success: true
-      data: {
-        codeReferral: string
-        email: string
-        name: string
-        score: number
-      }
+      data: UserData
     }
   | {
       success: false

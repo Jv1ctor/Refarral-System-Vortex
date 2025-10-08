@@ -65,6 +65,14 @@
   gap: var(--spacing-lg);
 }
 
+
+/* Block: failure request */
+.login-form__fail-message{
+  color: var(--error-color);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
 /* Responsive Design */
 @media (max-width: 480px) {
   .login-page {

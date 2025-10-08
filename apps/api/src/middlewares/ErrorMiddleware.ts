@@ -15,7 +15,7 @@ class ErrorMiddleware {
     const statusCode = err.statusCode ?? 500
     const messageError = err.statusCode ? err.message : "Internal Error Server"
 
-    res.status(statusCode).json({ error: messageError })
+    res.status(statusCode).json({ success: false, error: messageError })
   }
 }
 

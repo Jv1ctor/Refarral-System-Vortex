@@ -1,25 +1,26 @@
-
+import { Link } from "react-router"
 import { FormRegister } from "../components/FormRegister"
 import "../styles/pages/Login.css"
 
 export const Register = () => {
-
   return (
     <div className="login-page">
       <div className="login-card">
         <div className="login-card__header">
           <h1 className="login-card__title">Realize seu cadastro</h1>
-          <p className="login-card__subtitle">Insira suas informações para continuar</p>
+          <p className="login-card__subtitle">
+            Insira suas informações para continuar
+          </p>
         </div>
 
-        <FormRegister/>
+        <FormRegister />
 
         <div className="login-card__footer">
           <p className="login-card__footer-text">
             Já tem uma conta?{" "}
-            <a href="#" className="login-card__footer-link">
+            <Link className="login-card__footer-link" to={"/login"}>
               Log-in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

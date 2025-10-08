@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import { FormLogin } from "../components/FormLogin"
 import "../styles/pages/Login.css"
 
@@ -10,14 +11,14 @@ export const Login = () => {
           <p className="login-card__subtitle">Faça login para continuar</p>
         </div>
 
-        <FormLogin/>
+        <FormLogin />
 
         <div className="login-card__footer">
           <p className="login-card__footer-text">
             Não tem uma conta?{" "}
-            <a href="#" className="login-card__footer-link">
+            <Link className="login-card__footer-link" to={"/register"}>
               Cadastre-se
-            </a>
+            </Link>
           </p>
         </div>
       </div>

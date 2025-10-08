@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect, useParams } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 import { Home } from "../pages/Home";
 import type { InfoResponse } from "../types/api/InfoResponse";
 import { Login } from "../pages/Login";
@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Home />,
     loader: async () => {
+      if(!localStorage.getItem("token")) return redirect("/login")
       try {
         const token = localStorage.getItem("token")
         const response = await fetch("http://localhost:3000/user/info", {
@@ -36,10 +37,16 @@ export const router = createBrowserRouter([
   },
   {
     path: "/register/:code?",
+    loader: () => {
+      if(localStorage.getItem("token")) return redirect("/")
+    },
     element: <Register/>
   },
   {
     path: "/login",
+    loader: () => {
+      if(localStorage.getItem("token")) return redirect("/")
+    },
     element: <Login/>,
   },
   {

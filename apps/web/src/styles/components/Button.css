@@ -23,14 +23,20 @@
   background-color: var(--primary-hover);
 }
 
-.btn--primary:active {
+.btn--primary:active,
+.btn--danger:active {
   transform: translateY(3.5px);
 }
 
-/* Modifier: btn--full */
-.btn--full {
-  width: 100%;
+/* Modifier: color btn */
+.btn--danger{
+  background-color: var(--danger-color);
 }
+
+.btn--danger:hover{
+  background-color: var(--danger-hover);
+}
+
 
 /* Modifier: btn--disabled */
 .btn--disabled {

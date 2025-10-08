@@ -111,7 +111,7 @@ export class UserService {
     const token = JWT.sign(
       { id: existUser.id },
       process.env.SECRET_TOKEN as string,
-      { expiresIn: "1d" }
+      { expiresIn: "10s" }
     )
 
     return { success: true, data: token, error: null }

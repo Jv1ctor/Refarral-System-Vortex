@@ -1,12 +1,13 @@
 import "../styles/pages/Home.css"
 import { Header } from "../components/Header"
 import { Button } from "../components/Button"
-import { useLoaderData } from "react-router"
+import { useLoaderData, useNavigate } from "react-router"
 import type { UserData } from "../types/userData"
 import { useState } from "react"
 
 export const Home = () => {
   const [isClip, setIsClip] = useState(false)
+  const navigate = useNavigate()
   const { records } = useLoaderData() as { records: UserData }
   const url = `${window.location.origin}/${records.codeReferral}`
 
@@ -18,6 +19,11 @@ export const Home = () => {
         setIsClip(false)
         console.error(err)
       })
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    navigate("/login")
   }
 
   return (
@@ -60,7 +66,12 @@ export const Home = () => {
               <Button onClick={handleCopy} label="Copiar Link" />
             </div>
           </div>
+
+          <div className="home-page__footer">
+            <Button className="btn btn--danger" onClick={handleLogout} label="Logout"/>
+          </div>
         </div>
+
       </div>
     </div>
   )

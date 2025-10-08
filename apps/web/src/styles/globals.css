@@ -1,5 +1,5 @@
 /* global.css */
-@import url("normalize.css"); /* se quiser usar o normalize */
+@import url("normalize.css");
 
 :root {
   /* ============================================
@@ -85,7 +85,7 @@
   font-synthesis: none;
 }
 
-* {
+*, h1 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

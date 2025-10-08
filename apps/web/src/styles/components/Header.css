@@ -1,0 +1,21 @@
+
+
+
+/* Block: header  */
+
+.header-card{
+  margin: 0 auto;
+  max-width: 100%;
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-card);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.header-card__header{  
+  text-align: center;
+}
+
+.header-card__title{
+  color: var(--primary-color);
+}

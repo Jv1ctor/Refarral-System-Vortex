@@ -1,26 +1,23 @@
+import { type InputHTMLAttributes, type Ref } from "react"
 import "../styles/components/Input.css"
 
-type Props = {
-  label: string,
-  id: string,
-  placeholder: string,
-  isRequired: boolean,
-  type: "email" | "password" | "text"
+type Props = InputHTMLAttributes<HTMLInputElement> & {
+  label: string
+  message?: string
+  ref?: Ref<HTMLInputElement>
 }
 
-export const Input = ({ label, placeholder, isRequired, type, id}: Props) => {
+export const Input = (props: Props) => {
   return (
     <div className="field-container">
-      <label htmlFor={id} className="field-container__label">
-        {label}
+      <label htmlFor={props.id} className="field-container__label">
+        {props.label}
       </label>
-      <input
-        type={type}
-        id={id}
-        className="field-container__input"
-        placeholder={placeholder}
-        required={isRequired}
-      />
+      <input {...props} ref={props.ref} className="field-container__input" />
+
+      <p className={props.message && "field-container__error-text"}>
+        {props.message}
+      </p>
     </div>
   )
 }

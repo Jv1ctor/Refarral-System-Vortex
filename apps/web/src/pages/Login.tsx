@@ -1,5 +1,4 @@
-import { Button } from "../components/Button"
-import { Input } from "../components/Input"
+import { FormLogin } from "../components/FormLogin"
 import "../styles/pages/Login.css"
 
 export const Login = () => {
@@ -11,25 +10,7 @@ export const Login = () => {
           <p className="login-card__subtitle">Faça login para continuar</p>
         </div>
 
-        <form className="login-form">
-          <Input
-            isRequired={true}
-            label="Email"
-            placeholder="Digite seu e-mail"
-            id="email"
-            type="email"
-          />
-
-          <Input
-            isRequired={true}
-            label="Senha"
-            placeholder="Digite sua senha"
-            id="password"
-            type="password"
-          />
-
-          <Button label="Entrar"/>
-        </form>
+        <FormLogin/>
 
         <div className="login-card__footer">
           <p className="login-card__footer-text">

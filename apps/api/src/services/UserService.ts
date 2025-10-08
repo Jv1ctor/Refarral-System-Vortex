@@ -1,7 +1,7 @@
 import {
   UserRegisterSchema,
   UserRegisterSchemaType,
-} from "../../../lib/schemas/UserRegisterSchema"
+} from "../lib/schemas/UserRegisterSchema" 
 import bcrypt from "bcrypt"
 import { IUserRepository } from "../repository/UserRepository"
 import { genCode } from "../helpers/genCode"
@@ -10,9 +10,8 @@ import { ReturnServiceType } from "../types/ReturnServiceType"
 import {
   UserLoginSchema,
   UserLoginSchemaType,
-} from "../../../lib/schemas/UserLoginSchema"
+} from "../lib/schemas/UserLoginSchema"
 import JWT from "jsonwebtoken"
-import { success } from "zod"
 
 export class UserService {
   private saltsRound = process.env.SALTS_ROUNDS || 10

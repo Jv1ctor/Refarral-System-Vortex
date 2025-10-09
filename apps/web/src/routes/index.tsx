@@ -23,10 +23,10 @@ export const router = createBrowserRouter([
         })
 
         const responseJson:InfoResponse = await response.json()
-        console.log(responseJson)
         if(!response.ok || !responseJson.success){
           console.error("Error ao receber os dados")
-          return
+          localStorage.removeItem("token")
+          return redirect("/login")
         }
 
         return { records: responseJson.data }

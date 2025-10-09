@@ -14,5 +14,5 @@ export const UserLoginSchema = z.object({
     }),
 })
 
-
+export const UserLoginPartialSchema = UserLoginSchema.partial()
 export type UserLoginSchemaType = z.infer<typeof UserLoginSchema>

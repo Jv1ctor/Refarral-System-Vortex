@@ -9,8 +9,7 @@
     "prisma:studio": "prisma studio --schema=./src",
     "setup": "npm run prisma:generate && npm run prisma:migrate:dev",
     "dev": "tsx watch --env-file=.env ./src/server.ts",
-    "build": "tsc -b",
-    "check-types": "tsc --noEmit"
+    "build": "tsc -b"
   },
   "keywords": [],
   "author": "João Victor Barreto",
@@ -20,8 +19,7 @@
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "zod": "^4.1.12"
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",

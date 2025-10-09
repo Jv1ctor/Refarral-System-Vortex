@@ -1,7 +1,7 @@
 import {
   UserRegisterSchema,
   UserRegisterSchemaType,
-} from "../lib/schemas/UserRegisterSchema" 
+} from "../../../../packages/schemas/src/UserRegisterSchema"
 import bcrypt from "bcrypt"
 import { IUserRepository } from "../repository/UserRepository"
 import { genCode } from "../helpers/genCode"
@@ -10,7 +10,7 @@ import { ReturnServiceType } from "../types/ReturnServiceType"
 import {
   UserLoginSchema,
   UserLoginSchemaType,
-} from "../lib/schemas/UserLoginSchema"
+} from "../../../../packages/schemas/src/UserLoginSchema"
 import JWT from "jsonwebtoken"
 
 export class UserService {
@@ -72,7 +72,6 @@ export class UserService {
   ): ReturnServiceType<{
     score: number
   }> {
-
     const newScore = currentScore + 1
     const user = await this.userRep.earnScore(code, newScore)
 
@@ -111,7 +110,7 @@ export class UserService {
     const token = JWT.sign(
       { id: existUser.id },
       process.env.SECRET_TOKEN as string,
-      { expiresIn: 10 }
+      { expiresIn: "1d" }
     )
 
     return { success: true, data: token, error: null }

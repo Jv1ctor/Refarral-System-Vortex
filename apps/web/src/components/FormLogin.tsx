@@ -5,6 +5,10 @@ import type { LoginResponse } from "../types/api/LoginResponse"
 import { useNavigate } from "react-router"
 import type { ErrorFormLoginType } from "../types/ErrorFormType"
 import { verifyErrorForm } from "../helpers/verifyErrorForm"
+import {
+  emailSchema,
+  passSchema,
+} from "../../../../packages/schemas/src/UserFormSchema"
 
 export const FormLogin = () => {
   const navigate = useNavigate()
@@ -15,8 +19,33 @@ export const FormLogin = () => {
   const emailRef = useRef<HTMLInputElement>(null)
   const passRef = useRef<HTMLInputElement>(null)
 
+  const handleValid = ({ email, pass }: { email: string; pass: string }) => {
+    const { success: successEmail } = emailSchema.safeParse(email)
+    const { success: successPass } = passSchema.safeParse(pass)
+
+    let isFocus = false
+    if (!successEmail) {
+      if (!isFocus) emailRef.current?.focus()
+      isFocus = true
+      setErrors((prev) => [...prev, "email"])
+    }
+    if (!successPass) {
+      if (!isFocus) passRef.current?.focus()
+      isFocus = true
+      setErrors((prev) => [...prev, "pass"])
+    }
+
+    if (isFocus) return false
+
+    return true
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    const formsValid = handleValid({ email, pass })
+    if(!formsValid) return
+
     try {
       const response = await fetch("http://localhost:3000/user/login", {
         method: "POST",
@@ -31,6 +60,7 @@ export const FormLogin = () => {
         setErrors(["email", "pass"])
         return
       }
+
       localStorage.setItem("token", responseJson.data)
       navigate("/")
     } catch (error) {
@@ -39,23 +69,8 @@ export const FormLogin = () => {
     }
   }
 
-  const handleInvalid = (e: FormEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    let isFocus = false
-    if (!email || email.indexOf("@") === -1) {
-      if (!isFocus) emailRef.current?.focus()
-      isFocus = true
-      setErrors((prev) => [...prev, "email"])
-    }
-    if (!pass) {
-      if (!isFocus) passRef.current?.focus()
-      isFocus = true
-      setErrors((prev) => [...prev, "pass"])
-    }
-  }
-
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit} noValidate>
       <Input
         required
         ref={emailRef}
@@ -65,13 +80,14 @@ export const FormLogin = () => {
         type="email"
         value={email}
         message={
-          verifyErrorForm<ErrorFormLoginType>("email", errors) ? "Digite um email valido" : ""
+          verifyErrorForm<ErrorFormLoginType>("email", errors)
+            ? "Digite um email valido"
+            : ""
         }
         onChange={(e) => {
           setErrors([])
           setEmail(e.target.value)
         }}
-        onInvalid={handleInvalid}
       />
 
       <Input
@@ -83,13 +99,14 @@ export const FormLogin = () => {
         type="password"
         value={pass}
         message={
-          verifyErrorForm<ErrorFormLoginType>("pass", errors)? "Digite uma senha valida" : ""
+          verifyErrorForm<ErrorFormLoginType>("pass", errors)
+            ? "Digite uma senha valida"
+            : ""
         }
         onChange={(e) => {
           setErrors([])
           setPass(e.target.value)
         }}
-        onInvalid={handleInvalid}
       />
 
       <Button label="Entrar" />

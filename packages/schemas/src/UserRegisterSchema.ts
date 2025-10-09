@@ -3,6 +3,7 @@ import z from "zod"
 export const UserRegisterSchema = z.object({
   name: z
     .string()
+    .nonempty()
     .trim()
     .max(255, { error: "Nome ultrapassou a quantidade maxima de caracteres" }),
   email: z

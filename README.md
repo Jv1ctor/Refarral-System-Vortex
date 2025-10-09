@@ -207,7 +207,7 @@ Crie um arquivo `.env` na pasta `apps/api/` com as seguintes variáveis:
 
 ```env
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/referral_db"
-JWT_SECRET="seu_secret_jwt_aqui"
+SECRET_TOKEN="supersecret"
 PORT=3000
 ```
 
